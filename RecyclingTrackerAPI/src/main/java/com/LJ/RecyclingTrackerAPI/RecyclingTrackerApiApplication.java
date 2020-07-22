@@ -11,7 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RecyclingTrackerApiApplication implements CommandLineRunner {
+public class RecyclingTrackerApiApplication /*implements CommandLineRunner*/ {
 
 	@Autowired
 	private AccountRepository repository;
@@ -19,16 +19,17 @@ public class RecyclingTrackerApiApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(RecyclingTrackerApiApplication.class, args);
 	}
-	
+	/*
 	@Override
 	public void run(String... args) throws Exception {
 		repository.deleteAll();
 		
 		repository.save(new UserAccount("a@a.a"));
-		repository.save(new UserAccount("b@b.b"));
+		repository.save(new UserAccount("c@c.c"));
 			
 		System.out.println(repository.findByEmail("a@a.a").getEmail());
 	}
+	*/
 }
 
 

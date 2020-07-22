@@ -16,7 +16,7 @@ public class UserAccount {
 	String password;
 	String userType;
 	Map<Date, Integer> frequency;
-	String employerCode;
+	String groupCode;
 	List<String> connectedCodes;
 	
 	public UserAccount(String email) {
@@ -53,11 +53,11 @@ public class UserAccount {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmployerCode() {
-		return employerCode;
+	public String getGroupCode() {
+		return groupCode;
 	}
-	public void setEmployerCode(String employerCode) {
-		this.employerCode = employerCode;
+	public void setGroupCode(String employerCode) {
+		this.groupCode = employerCode;
 	}
 	public List<String> getConnectedCodes() {
 		return connectedCodes;
