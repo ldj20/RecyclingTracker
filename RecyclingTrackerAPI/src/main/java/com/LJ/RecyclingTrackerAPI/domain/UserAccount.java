@@ -19,6 +19,10 @@ public class UserAccount {
 	String employerCode;
 	List<String> connectedCodes;
 	
+	public UserAccount(String email) {
+		this.email = email;
+	}
+	
 	public String getId() {
 		return id;
 	}
