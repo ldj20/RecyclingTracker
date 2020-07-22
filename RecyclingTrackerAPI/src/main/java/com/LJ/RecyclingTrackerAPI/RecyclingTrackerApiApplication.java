@@ -22,7 +22,6 @@ public class RecyclingTrackerApiApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("a");
 		repository.deleteAll();
 		
 		repository.save(new UserAccount("a@a.a"));
