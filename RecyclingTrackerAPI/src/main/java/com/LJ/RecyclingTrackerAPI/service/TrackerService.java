@@ -11,13 +11,13 @@ public interface TrackerService {
 
 	List<UserAccount> findAll();
 	
+	UserAccount findByEmail(String email);
+	
+	UserAccount findById(String id);
+	
 	DisplayData getDisplayData(String id);
 	
-	void createUser(UserAccount user);
-	
-	void updateUserInfo(UserAccount user);
-	
-	void updateInputs(Map<Date, Integer> frequency);
-	
+	void createOrUpdateUser(UserAccount user);
+		
 	void deleteUser(String id);
 }
