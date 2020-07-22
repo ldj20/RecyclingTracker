@@ -17,7 +17,8 @@ public class UserAccount {
 	String userType;
 	Map<Date, Integer> frequency;
 	String groupCode;
-	List<String> connectedCodes;
+	String connectedCode;
+	int goal;
 	
 	public UserAccount(String email) {
 		this.email = email;
@@ -56,13 +57,19 @@ public class UserAccount {
 	public String getGroupCode() {
 		return groupCode;
 	}
-	public void setGroupCode(String employerCode) {
-		this.groupCode = employerCode;
+	public void setGroupCode(String groupCode) {
+		this.groupCode = groupCode;
 	}
-	public List<String> getConnectedCodes() {
-		return connectedCodes;
+	public String getConnectedCode() {
+		return connectedCode;
 	}
-	public void setConnectedCodes(List<String> connectedCodes) {
-		this.connectedCodes = connectedCodes;
+	public void setConnectedCode(String connectedCode) {
+		this.connectedCode = connectedCode;
+	}
+	public int getGoal() {
+		return goal;
+	}
+	public void setGoal(int goal) {
+		this.goal = goal;
 	}
 }
