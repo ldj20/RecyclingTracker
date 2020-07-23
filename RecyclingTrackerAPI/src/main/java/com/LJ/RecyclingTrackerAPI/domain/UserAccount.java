@@ -16,8 +16,6 @@ public class UserAccount {
 	String password;
 	String userType;
 	Map<Date, Integer> frequency;
-	String groupCode;
-	String connectedCode;
 	int goal;
 	
 	public UserAccount(String email, int goal) {
@@ -58,18 +56,6 @@ public class UserAccount {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getGroupCode() {
-		return groupCode;
-	}
-	public void setGroupCode(String groupCode) {
-		this.groupCode = groupCode;
-	}
-	public String getConnectedCode() {
-		return connectedCode;
-	}
-	public void setConnectedCode(String connectedCode) {
-		this.connectedCode = connectedCode;
 	}
 	public int getGoal() {
 		return goal;

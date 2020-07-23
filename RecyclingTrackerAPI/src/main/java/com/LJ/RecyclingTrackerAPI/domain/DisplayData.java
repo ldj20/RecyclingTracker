@@ -9,6 +9,16 @@ import org.springframework.stereotype.Service;
 public class DisplayData {
 	private Map<Date, Integer> frequency;
 	private String message;
+	private boolean background;
+	
+	public DisplayData(Map<Date, Integer> frequency, String message) {
+		this.frequency = frequency;
+		this.message = message;
+	}
+	
+	public DisplayData() {
+		
+	}
 	
 	public Map<Date, Integer> getFrequency() {
 		return frequency;
@@ -25,14 +35,13 @@ public class DisplayData {
 	public String getMessage() {
 		return message;
 	}
-	
-	public DisplayData(Map<Date, Integer> frequency, String message) {
-		this.frequency = frequency;
-		this.message = message;
+
+	public boolean isBackground() {
+		return background;
 	}
-	
-	public DisplayData() {
-		
+
+	public void setBackground(boolean background) {
+		this.background = background;
 	}
 	
 }
