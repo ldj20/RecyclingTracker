@@ -20,8 +20,13 @@ public class UserAccount {
 	String connectedCode;
 	int goal;
 	
-	public UserAccount(String email) {
+	public UserAccount(String email, int goal) {
 		this.email = email;
+		this.goal = goal;
+	}
+	
+	public UserAccount() {
+		
 	}
 	
 	public String getId() {
