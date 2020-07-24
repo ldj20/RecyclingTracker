@@ -3,8 +3,11 @@ package com.LJ.RecyclingTrackerAPI.request.model;
 import java.util.Date;
 import java.util.Map;
 
+import javax.validation.constraints.NotNull;
+
 public class OverallUpdateModel {
 	private UpdateUserModel updatedDetails;
+	@NotNull(message="does this work?")
 	private String updatedPassword;
 	private Map<Date, Integer> updatedFrequency;
 	

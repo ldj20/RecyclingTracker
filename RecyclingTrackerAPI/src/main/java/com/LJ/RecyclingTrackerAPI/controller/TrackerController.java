@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -49,7 +51,7 @@ public class TrackerController {
 	}
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody OverallUpdateModel update) {
+	public ResponseEntity<?> updateUser(@PathVariable String id, @Valid @RequestBody OverallUpdateModel update) {
 		UserAccount user = trackerService.findById(id);
 		if (update.getUpdatedDetails() != null) {
 			user = updateUserDetails(user, update.getUpdatedDetails());
