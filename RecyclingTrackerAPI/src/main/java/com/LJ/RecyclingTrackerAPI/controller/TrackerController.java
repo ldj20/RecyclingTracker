@@ -1,8 +1,8 @@
 package com.LJ.RecyclingTrackerAPI.controller;
 
+import java.util.Date;
 import java.util.List;
-
-import javax.validation.Valid;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.request.model.OverallUpdateModel;
 import com.LJ.RecyclingTrackerAPI.request.model.UpdateUserModel;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 
@@ -41,22 +42,50 @@ public class TrackerController {
 		return new ResponseEntity(result, HttpStatus.OK);
 	}
 	
-	@PutMapping
+	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody UserAccount user) {
 		trackerService.createOrUpdateUser(user);
 		return new ResponseEntity("Input user succesfully", HttpStatus.OK);
 	}
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody UpdateUserModel updatedDetails)
-	{
+	public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody OverallUpdateModel update) {
 		UserAccount user = trackerService.findById(id);
+		if (update.getUpdatedDetails() != null) {
+			user = updateUserDetails(user, update.getUpdatedDetails());
+		} else if (update.getUpdatedPassword() != null) {
+			user = updateUserPassword(user, update.getUpdatedPassword());
+		} else {
+			user = updateUserFrequency(user, update.getUpdatedFrequency());
+		}
+		
+		return new ResponseEntity(user, HttpStatus.OK);
+	}
+	
+	public UserAccount updateUserDetails(UserAccount user, UpdateUserModel updatedDetails)
+	{
 		user.setfName(updatedDetails.getfName());
 		user.setlName(updatedDetails.getlName());
 		user.setGoal(updatedDetails.getGoal());
 		
 		trackerService.createOrUpdateUser(user);
-		return new ResponseEntity(user, HttpStatus.OK);
+		return user;
+	}
+	
+	public UserAccount updateUserPassword(UserAccount user, String updatedPassword)
+	{
+		user.setPassword(updatedPassword);
+		
+		trackerService.createOrUpdateUser(user);
+		return user;
+	}
+	
+	public UserAccount updateUserFrequency(UserAccount user, Map<Date, Integer> updatedFrequency)
+	{
+		user.setFrequency(updatedFrequency);
+		
+		trackerService.createOrUpdateUser(user);
+		return user;
 	}
 	
 	@DeleteMapping
