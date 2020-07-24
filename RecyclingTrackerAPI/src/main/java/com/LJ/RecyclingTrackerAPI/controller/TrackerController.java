@@ -2,6 +2,8 @@ package com.LJ.RecyclingTrackerAPI.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.request.model.UpdateUserModel;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 
 @RestController
@@ -39,9 +42,21 @@ public class TrackerController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> createOrUpdateUser(@RequestBody UserAccount user) {
+	public ResponseEntity<?> createUser(@RequestBody UserAccount user) {
 		trackerService.createOrUpdateUser(user);
 		return new ResponseEntity("Input user succesfully", HttpStatus.OK);
+	}
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody UpdateUserModel updatedDetails)
+	{
+		UserAccount user = trackerService.findById(id);
+		user.setfName(updatedDetails.getfName());
+		user.setlName(updatedDetails.getlName());
+		user.setGoal(updatedDetails.getGoal());
+		
+		trackerService.createOrUpdateUser(user);
+		return new ResponseEntity(user, HttpStatus.OK);
 	}
 	
 	@DeleteMapping

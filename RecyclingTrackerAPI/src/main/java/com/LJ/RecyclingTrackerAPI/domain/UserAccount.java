@@ -12,9 +12,10 @@ public class UserAccount {
 	
 	@Id
 	String id;
+	String fName;
+	String lName;
 	String email;
 	String password;
-	String userType;
 	Map<Date, Integer> frequency;
 	int goal;
 	
@@ -33,11 +34,17 @@ public class UserAccount {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getUserType() {
-		return userType;
+	public String getfName() {
+		return fName;
 	}
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+	public String getlName() {
+		return lName;
+	}
+	public void setlName(String lName) {
+		this.lName = lName;
 	}
 	public Map<Date, Integer> getFrequency() {
 		return frequency;
