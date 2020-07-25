@@ -1,5 +1,6 @@
 package com.LJ.RecyclingTrackerAPI.exceptions;
 
+import java.time.DateTimeException;
 import java.util.Date;
 
 import org.springframework.http.HttpHeaders;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.LJ.RecyclingTrackerAPI.domain.ErrorMessage;
 
+/*
 @ControllerAdvice
 public class AppExceptionsHandler extends ResponseEntityExceptionHandler {
 
@@ -31,13 +33,9 @@ public class AppExceptionsHandler extends ResponseEntityExceptionHandler {
 	}
 	
 	@ExceptionHandler(value = { NullPointerException.class })
-	public ResponseEntity<Object> handleSpecificExceptions(NullPointerException ex, WebRequest request) {
+	public ResponseEntity<Object> handleNullPointer(NullPointerException ex, WebRequest request) {
 		
 		String errorMessageDescription = ex.getLocalizedMessage();
-		
-		if (errorMessageDescription == null) {
-			errorMessageDescription = ex.toString();
-		}
 		
 		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
 		
@@ -45,5 +43,16 @@ public class AppExceptionsHandler extends ResponseEntityExceptionHandler {
 			errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@ExceptionHandler(value = { DateTimeException.class })
+	public ResponseEntity<Object> handleDateTime(DateTimeException ex, WebRequest request) {
+		
+		String errorMessageDescription = ex.getLocalizedMessage();
+		
+		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
+		
+		return new ResponseEntity<>(
+			errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
+*/
 
