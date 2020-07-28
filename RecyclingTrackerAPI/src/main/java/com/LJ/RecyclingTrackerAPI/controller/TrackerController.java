@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,12 +29,14 @@ import com.LJ.RecyclingTrackerAPI.request.model.OverallUpdateModel;
 import com.LJ.RecyclingTrackerAPI.request.model.UpdateUserModel;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/users")
 public class TrackerController {
 
 	@Autowired
-	TrackerService trackerService;
+	private TrackerService trackerService;
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@GetMapping
 	public ResponseEntity<?> getAll() {
@@ -46,6 +52,8 @@ public class TrackerController {
 	
 	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody UserAccount user) {
+		String pw_hash = passwordEncoder.encode(user.getPassword());
+		user.setPassword(pw_hash);
 		trackerService.createOrUpdateUser(user);
 		return new ResponseEntity("Input user succesfully", HttpStatus.OK);
 	}
