@@ -29,9 +29,9 @@ import com.LJ.RecyclingTrackerAPI.request.model.OverallUpdateModel;
 import com.LJ.RecyclingTrackerAPI.request.model.UpdateUserModel;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 
-@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*")
 public class TrackerController {
 
 	@Autowired
