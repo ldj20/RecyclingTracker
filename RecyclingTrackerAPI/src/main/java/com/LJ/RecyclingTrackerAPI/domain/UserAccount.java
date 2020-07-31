@@ -18,6 +18,7 @@ public class UserAccount {
 	String password;
 	Map<Date, Integer> frequency;
 	int goal;
+	int points;
 	
 	public UserAccount(String email, int goal) {
 		this.email = email;
@@ -69,5 +70,11 @@ public class UserAccount {
 	}
 	public void setGoal(int goal) {
 		this.goal = goal;
+	}
+	public int getPoints() {
+		return points;
+	}
+	public void setPoints(int points) {
+		this.points = points;
 	}
 }
