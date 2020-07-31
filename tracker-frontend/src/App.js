@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import DataService from './UserServices';
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   }
   return (
     <div>
+      <Navbar/>
+
       <button onClick={testService}>Test</button>
       <p>{content}</p>
     </div>
