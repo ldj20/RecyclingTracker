@@ -32,7 +32,6 @@ import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "*")
 public class TrackerController {
 
 	@Autowired
