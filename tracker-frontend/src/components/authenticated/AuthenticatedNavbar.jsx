@@ -36,4 +36,4 @@ function AuthenticatedNavbar() {
     );
 }
 
-export default AuthenitcatedNavbar;
+export default AuthenticatedNavbar;

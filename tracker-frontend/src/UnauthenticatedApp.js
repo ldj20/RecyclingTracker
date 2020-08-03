@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import UnauthenticatedNavbar from './compoennts/UnauthenticatedNavbar';
+import { Route, useHistory } from 'react-router-dom';
 
+import UnauthenticatedNavbar from './components/unauthenticated/UnauthenticatedNavbar';
 import Home from './components/unauthenticated/Home';
 import SignUp from './components/unauthenticated/SignUp';
 import Login from './components/unauthenticated/Login';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DataService from '../../UserServices';
-
+import { Link, useHistory } from 'react-router-dom';
 
 function Home() {
     
@@ -15,11 +15,11 @@ function Home() {
     }
 
     return (
-        <div>
-            <h2>Home</h2>
-            <button onClick={testService}>Test</button>
-            <p>{content}</p>
-        </div>
+      <div className="homepage-header">
+        <h1>Recycling Tracker</h1>
+        <Link to="/sign-up" className="btn btn-lg btn-outline-primary home-button">Sign Up</Link>
+        <Link to="/login" className="btn btn-lg btn-secondary home-button">Login</Link>
+      </div>
     )
 }
 
