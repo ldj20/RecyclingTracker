@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import DataService from '../../UserServices';
 import { Link } from 'react-router-dom';
 
+//todo: figure out why validations aren't working, make recycling goal limited to numbers
+
 function SignUp(props) {
 
     const initialFormState= {
@@ -22,8 +24,6 @@ function SignUp(props) {
     };
 
     const saveData = event => {
-        const currDate = new Date();
-        setForm({...form})
         DataService.create(form)
             .then(response => {
                 setSubmitted(true);
@@ -80,13 +80,13 @@ function SignUp(props) {
                 <div className="form-group preauth-select-style">
                     <label htmlFor="email">Email</label>
                     <input
-                    type="text"
-                    className="form-control"
-                    id="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    name="email"
+                        type="text"
+                        className="form-control"
+                        id="email"
+                        required
+                        value={form.email}
+                        onChange={handleChange}
+                        name="email"
                     />
                 </div>
 
@@ -103,7 +103,7 @@ function SignUp(props) {
                     />
                 </div>
 
-                {/* <div className="form-group preauth-select-style"> */}
+                <div className="form-group preauth-select-style">
                     <label htmlFor="goal">Daily Recycling Goal</label>
                     <input
                         type="text"
@@ -114,7 +114,7 @@ function SignUp(props) {
                         onChange={handleChange}
                         name="goal"
                     />
-                {/* </div> */}
+                </div>
         
                 <button type="submit" className="btn btn-info form-control preauth-button-style" onClick={saveData}>
                     Submit

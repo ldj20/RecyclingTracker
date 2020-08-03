@@ -23,7 +23,7 @@ function AuthenticatedNavbar() {
 
                 <ul className="navbar-nav ml-auto">  
                   <li className="nav-item">
-                    <Link to="/details" className="nav-link">Account Details</Link>
+                    <Link to="/details" className="nav-link">Account</Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/logout" className="nav-link">Logout</Link>
