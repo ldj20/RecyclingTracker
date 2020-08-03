@@ -25,7 +25,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	/*
 	@Autowired
@@ -65,25 +65,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http
-    		.headers()
-    		.frameOptions()
-    		.deny()
-    		.and()
-	    	.authorizeRequests()
-	    	.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-	    	/*
-	        .antMatchers(HttpMethod.POST,"/users").permitAll()
-	        .antMatchers(HttpMethod.GET, "/users").permitAll()
-	        .antMatchers(HttpMethod.GET,"/users/*").permitAll()
-	        .antMatchers(HttpMethod.PUT,"/users/*").permitAll()
-	        .antMatchers(HttpMethod.DELETE,"/users").permitAll()
-	        */
+    		.csrf().disable();
+	    	/*.authorizeRequests()
+	    	.antMatchers(HttpMethod.POST, "/**").permitAll()
 	        .anyRequest()
-	        .authenticated()
-	        .and()
-	        .httpBasic();
-    		//.and().formLogin().permitAll();
+	        .authenticated();*/
     }
-
-
 }

@@ -1,13 +1,17 @@
 package com.LJ.RecyclingTrackerAPI.domain;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 @Document
+@Component
 public class UserAccount {
 	
 	@Id
@@ -17,16 +21,25 @@ public class UserAccount {
 	String email;
 	String password;
 	Map<Date, Integer> frequency;
+	Date creationDate;
 	int goal;
 	int points;
 	
-	public UserAccount(String email, int goal) {
-		this.email = email;
-		this.goal = goal;
-	}
-	
+	//autowired constructor for testing
+	@Autowired
 	public UserAccount() {
-		
+		Date currDate = new Date();
+		fName = "example";
+		lName = "example";
+		email = "ex@ex.ex";
+		password = "fdsbasd";
+		Map<Date, Integer> frequency = new HashMap<Date, Integer>();
+		for (int i = 4; i > 0; i--) {
+			frequency.put(new Date(currDate.getTime() - i*24*3600*1000l), i+1);
+		}
+		Date creationDate = currDate;
+		goal = 3;
+		points = 0;
 	}
 	
 	public String getId() {
@@ -64,6 +77,12 @@ public class UserAccount {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Date getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 	public int getGoal() {
 		return goal;

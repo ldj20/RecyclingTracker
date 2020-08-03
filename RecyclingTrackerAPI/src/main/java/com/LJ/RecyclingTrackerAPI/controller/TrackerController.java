@@ -33,9 +33,10 @@ import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 @RestController
 @RequestMapping("/users")
 public class TrackerController {
-
+	
 	@Autowired
 	private TrackerService trackerService;
+	private UserAccount testUser;
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@GetMapping
