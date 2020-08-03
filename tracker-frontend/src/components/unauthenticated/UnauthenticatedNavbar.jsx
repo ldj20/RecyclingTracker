@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function UnauthenticatedNavbar() {
     const [collapsed, setCollapsed] = useState(true);
     
     const classOne = collapsed ?  'collapse navbar-collapse' : 'collapse navbar-collapse show';
@@ -36,4 +36,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default UnauthenticatedNavbar;

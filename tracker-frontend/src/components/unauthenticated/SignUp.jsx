@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DataService from '../UserServices';
+import DataService from '../../UserServices';
 
 function SignUp() {
     return (

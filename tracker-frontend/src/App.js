@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
-
 import DataService from './UserServices';
 
+const AuthenticatedApp = React.lazy(() => import('./AuthenticatedApp'))
+const UnauthenticatedApp = React.lazy(() => import('./UnauthenticatedApp'))
+
 function App() {
+  const user = useUser()
   return (
     <div>
-      <Navbar/>
-
-      <Route path="/" exact={true} component={Home} />
-      <Route path="/sign-up" component={SignUp} />
-      <Route path="/login" component={Login} />
+      {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </div>
   );
 }
