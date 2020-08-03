@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Logout() {
-    return <div>
-        {/* {localStorage.removeItem('rTrackerToken')} */}
-    </div>
+
+    const history = useHistory();
+
+    useEffect(() => {
+        /*localStorage.removeItem('rTrackerToken')
+        history.push("/");*/
+    })
+
+    return <div />
 }
 
 export default Logout;
