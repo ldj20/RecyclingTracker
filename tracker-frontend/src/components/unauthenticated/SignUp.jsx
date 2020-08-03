@@ -23,7 +23,7 @@ function SignUp(props) {
 
     const saveData = event => {
         const currDate = new Date();
-        setForm({...form, frequency: {}, creationDate: currDate, points: 0})
+        setForm({...form})
         DataService.create(form)
             .then(response => {
                 setSubmitted(true);
@@ -103,7 +103,7 @@ function SignUp(props) {
                     />
                 </div>
 
-                <div className="form-group preauth-select-style">
+                {/* <div className="form-group preauth-select-style"> */}
                     <label htmlFor="goal">Daily Recycling Goal</label>
                     <input
                         type="text"
@@ -114,7 +114,7 @@ function SignUp(props) {
                         onChange={handleChange}
                         name="goal"
                     />
-                </div>
+                {/* </div> */}
         
                 <button type="submit" className="btn btn-info form-control preauth-button-style" onClick={saveData}>
                     Submit
@@ -123,7 +123,7 @@ function SignUp(props) {
             </div>
             )}
         </div>
-      );
+    );
 };
 
 export default SignUp;

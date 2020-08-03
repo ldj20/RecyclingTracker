@@ -16,15 +16,15 @@ import org.springframework.stereotype.Component;
 public class UserAccount {
 	
 	@Id
-	String id;
-	String fName;
-	String lName;
-	String email;
-	String password;
-	Map<Date, Integer> frequency;
-	Date creationDate;
-	int goal;
-	int points;
+	private String id;
+	private String fName;
+	private String lName;
+	private String email;
+	private String password;
+	private Map<Date, Integer> frequency;
+	private Date creationDate;
+	private int goal;
+	private int points;
 	
 	//autowired constructor for testing
 	@Autowired
@@ -44,6 +44,16 @@ public class UserAccount {
 		goal = 3;
 		points = 0;
 	}
+	
+	//autowired constructor for production
+	/*
+	@Autowired
+	public UserAccount() {
+		frequency = new HashMap<Date, Integer>();
+		creationDate = new Date();
+		points = 0;
+	}
+	*/
 	
 	public String getId() {
 		return id;

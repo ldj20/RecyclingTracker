@@ -1,6 +1,7 @@
 package com.LJ.RecyclingTrackerAPI.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -75,6 +76,9 @@ public class TrackerController {
 	public ResponseEntity<?> createUser(@RequestBody UserAccount user) {
 		String pw_hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(pw_hash);
+		user.setPoints(0);
+		user.setCreationDate(new Date());
+		user.setFrequency(new HashMap<Date, Integer>());
 		trackerService.createOrUpdateUser(user);
 		return new ResponseEntity("Input user succesfully", HttpStatus.OK);
 	}
