@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Document
@@ -28,11 +29,13 @@ public class UserAccount {
 	//autowired constructor for testing
 	@Autowired
 	public UserAccount() {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 		Date currDate = new Date();
 		fName = "example";
 		lName = "example";
 		email = "ex@ex.ex";
-		password = "fdsbasd";
+		password = passwordEncoder.encode("fdsbasd");
 		Map<Date, Integer> frequency = new HashMap<Date, Integer>();
 		for (int i = 4; i > 0; i--) {
 			frequency.put(new Date(currDate.getTime() - i*24*3600*1000l), i+1);

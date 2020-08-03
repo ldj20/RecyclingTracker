@@ -1,5 +1,5 @@
 package com.RecyclingTrackerAPI.config;
-
+/*
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -77,3 +77,4 @@ public class JwtRequestFilter extends OncePerRequestFilter
 		chain.doFilter(request, response);
 	}
 }
+*/

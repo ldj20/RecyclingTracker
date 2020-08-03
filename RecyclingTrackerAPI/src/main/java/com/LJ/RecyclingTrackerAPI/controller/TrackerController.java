@@ -36,6 +36,7 @@ public class TrackerController {
 	
 	@Autowired
 	private TrackerService trackerService;
+	@Autowired
 	private UserAccount testUser;
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
@@ -54,13 +55,19 @@ public class TrackerController {
 	@GetMapping("/display/{id}")
 	public ResponseEntity<?> getDisplayData(@PathVariable("id") String id) {
 		UserAccount result = trackerService.findById(id);
+		
+		//uncomment below line and comment above line to test various different values for UserAccount
+		//UserAccount result = testUser;
+		
 		String message = "You still have some habits to build up, but you'll get there eventually!";
 		Boolean background = false;
 		if (result.getPoints() > 0) {
 			message = "You've been recycling well and reaching your goal! Keep it up!";
 			background = true;
 		}
+		
 		DisplayData returnData = new DisplayData(result.getFrequency(), message, background, result.getPoints());
+		
 		return new ResponseEntity(returnData, HttpStatus.OK);
 	}
 	
