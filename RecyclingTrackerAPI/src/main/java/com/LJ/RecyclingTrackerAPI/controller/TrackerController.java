@@ -86,8 +86,7 @@ public class TrackerController {
 		return new ResponseEntity(user, HttpStatus.OK);
 	}
 	
-	public UserAccount updateUserDetails(UserAccount user, UpdateUserModel updatedDetails)
-	{
+	public UserAccount updateUserDetails(UserAccount user, UpdateUserModel updatedDetails) {
 		user.setfName(updatedDetails.getfName());
 		user.setlName(updatedDetails.getlName());
 		user.setGoal(updatedDetails.getGoal());
@@ -113,8 +112,9 @@ public class TrackerController {
 	}
 	
 	@DeleteMapping
-	public void deleteUser(@RequestParam("id") String id) {
+	public ResponseEntity<?> deleteUser(@RequestParam("id") String id) {
 		trackerService.deleteUser(id);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 }
