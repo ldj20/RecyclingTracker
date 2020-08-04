@@ -7,4 +7,19 @@ const http = axios.create({
   }
 });
 
-export default http;
+const httpA = token => {
+  return (
+    axios.create({
+      baseURL: "https://localhost:8080",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+  );
+};
+
+export default {
+  http,
+  httpA
+};

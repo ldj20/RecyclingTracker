@@ -3,17 +3,6 @@ import DataService from '../../UserServices';
 import { Link, useHistory } from 'react-router-dom';
 
 function Home() {
-    
-    const [content, setContent] = useState();
-
-    function testService() {
-    DataService.get()
-      .then(response => {
-        console.log(response);
-        setContent(response);
-      })
-    }
-
     return (
       <div className="homepage-header">
         <h1>Recycling Tracker</h1>

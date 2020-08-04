@@ -1,4 +1,4 @@
-import http from "./http-common";
+import { http, httpA } from "./http-common";
 
 const create = data => {
     return http.post("/users", data);
@@ -8,7 +8,18 @@ const get = () => {
     return http.get("/users");
 };
 
+const getById = id => {
+    const authHTTP = httpA(token);
+    return authHTTP.get(`/users/${id}`)
+}
+
+const getDisplay = id => {
+    const authHTTP = httpA(token);
+    return authHTTP.get(`/users/display/${id}`)
+}
+
 export default {
     create,
-    get
+    get,
+    getById
 }
