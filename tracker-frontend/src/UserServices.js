@@ -8,12 +8,12 @@ const get = () => {
     return http.get("/users");
 };
 
-const getById = id => {
+const getById = (id, token) => {
     const authHTTP = httpA(token);
     return authHTTP.get(`/users/${id}`)
 }
 
-const getDisplay = id => {
+const getDisplay = (id, token) => {
     const authHTTP = httpA(token);
     return authHTTP.get(`/users/display/${id}`)
 }

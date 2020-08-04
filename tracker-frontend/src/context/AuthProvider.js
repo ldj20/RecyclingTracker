@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import PageSpinner from '../components/PageSpinner';
 import DataService from '../UserServices';
 
+const AuthContext = React.createContext()
+
 function AuthProvider() {
     const [userData, setUserData] = useState();
     const [displayData, setDisplayData] = useState();

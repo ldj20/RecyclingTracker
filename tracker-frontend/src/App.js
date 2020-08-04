@@ -10,7 +10,7 @@ function App() {
   //const user = useUser()
   return (
     <div>
-      {true ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      {false ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </div>
   );
 }

@@ -19,7 +19,7 @@ const httpA = token => {
   );
 };
 
-export default {
+export {
   http,
   httpA
 };
