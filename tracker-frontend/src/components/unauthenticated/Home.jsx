@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import DataService from '../../UserServices';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 function Home() {

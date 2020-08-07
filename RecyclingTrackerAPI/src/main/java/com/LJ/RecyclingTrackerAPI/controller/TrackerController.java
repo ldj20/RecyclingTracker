@@ -106,16 +106,14 @@ public class TrackerController {
 		return user;
 	}
 	
-	public UserAccount updateUserPassword(UserAccount user, String updatedPassword)
-	{
+	public UserAccount updateUserPassword(UserAccount user, String updatedPassword) {
 		user.setPassword(updatedPassword);
 		
 		trackerService.createOrUpdateUser(user);
 		return user;
 	}
 	
-	public UserAccount updateUserFrequency(UserAccount user, Map<Date, Integer> updatedFrequency)
-	{
+	public UserAccount updateUserFrequency(UserAccount user, Map<Date, Integer> updatedFrequency) {
 		user.setFrequency(updatedFrequency);
 		
 		trackerService.createOrUpdateUser(user);
