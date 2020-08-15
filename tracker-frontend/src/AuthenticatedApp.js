@@ -9,7 +9,7 @@ import Logout from './components/authenticated/Logout';
 function AuthenticatedApp() {
     return (
       <div>
-        <AuthenticatedNavbar/>
+        <AuthenticatedNavbar />
 
         <Route path="/" exact={true} component={AccountHome} />
         <Route path="/details" component={AccountDetails} />
