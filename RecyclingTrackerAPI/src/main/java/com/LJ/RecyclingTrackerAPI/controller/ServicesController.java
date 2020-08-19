@@ -61,6 +61,15 @@ public class ServicesController {
 
 		    return new ModelAndView("result", map);
 	}
+	
+	@RequestMapping("/getLabelDetection")
+	public String getLabelDetection() {
+	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/cat.jpg");
+	  AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
+	                                      imageResource, Feature.Type.LABEL_DETECTION);
+	  return response.getLabelAnnotationsList().toString();
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDisplayData(@PathVariable("id") String id) {
 		UserAccount result = trackerService.findById(id);
@@ -78,13 +87,5 @@ public class ServicesController {
 		DisplayData returnData = new DisplayData(result.getFrequency(), message, background, result.getPoints());
 		
 		return new ResponseEntity(returnData, HttpStatus.OK);
-	}
-	@RequestMapping("/getLabelDetection")
-	public String getLabelDetection() {
-	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/cat.jpg");
-	  AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
-	                                      imageResource, Feature.Type.LABEL_DETECTION);
-	  return response.getLabelAnnotationsList().toString();
-	}
-	
+	}	
 }
