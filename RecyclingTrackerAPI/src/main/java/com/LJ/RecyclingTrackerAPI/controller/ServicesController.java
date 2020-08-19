@@ -70,6 +70,7 @@ public class ServicesController {
 	  return response.getLabelAnnotationsList().toString();
 	}
 	
+	//sends an object with only the necessary components for a dashboard
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDisplayData(@PathVariable("id") String id) {
 		UserAccount result = trackerService.findById(id);
