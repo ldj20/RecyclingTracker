@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.vision.CloudVisionTemplate;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
+import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.Feature.Type;
 
 @RestController
@@ -77,6 +79,12 @@ public class ServicesController {
 		
 		return new ResponseEntity(returnData, HttpStatus.OK);
 	}
-	
+	@RequestMapping("/getLabelDetection")
+	public String getLabelDetection() {
+	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/cat.jpg");
+	  AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
+	                                      imageResource, Feature.Type.LABEL_DETECTION);
+	  return response.getLabelAnnotationsList().toString();
+	}
 	
 }

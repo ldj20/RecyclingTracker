@@ -34,3 +34,6 @@ build/
 
 ### DB config ###
 /config
+
+### API token ###
+Cloud-API-Key1.json
