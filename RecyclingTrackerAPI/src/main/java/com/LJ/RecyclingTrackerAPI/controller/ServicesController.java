@@ -64,7 +64,7 @@ public class ServicesController {
 	
 	@RequestMapping("/getLabelDetection")
 	public String getLabelDetection() {
-	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/cat.jpg");
+	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/static/cat.jpeg");
 	  AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
 	                                      imageResource, Feature.Type.LABEL_DETECTION);
 	  return response.getLabelAnnotationsList().toString();
