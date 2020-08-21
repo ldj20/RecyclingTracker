@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.Ordered;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -30,6 +31,7 @@ public class RecyclingTrackerApiApplication /*implements CommandLineRunner*/ {
 	private AccountRepository repository;
 	
 	public static void main(String[] args) {
+		
 		SpringApplication.run(RecyclingTrackerApiApplication.class, args);
 	}
     @Bean
