@@ -63,11 +63,12 @@ public class ServicesController {
 	}
 	
 	@RequestMapping("/getLabelDetection")
-	public String getLabelDetection() {
-	  Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/static/cat.jpeg");
-	  AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
-	                                      imageResource, Feature.Type.LABEL_DETECTION);
-	  return response.getLabelAnnotationsList().toString();
+	public String getLabelDetection(String img) {
+		System.out.println(img);
+		Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/static/cat.jpeg");
+		AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
+		                                    imageResource, Feature.Type.LABEL_DETECTION);
+		return response.getLabelAnnotationsList().toString();
 	}
 	
 	//sends an object with only the necessary components for a dashboard

@@ -18,8 +18,14 @@ const getDisplay = (id, token) => {
     return authHTTP.get(`/users/display/${id}`)
 }
 
+const getLabels = img => {
+    return http.post("/services/getLabelDetection", img);
+}
+
 export default {
     create,
     get,
-    getById
+    getById,
+    getDisplay,
+    getLabels,
 }
