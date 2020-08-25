@@ -1,6 +1,7 @@
 import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import DataService from '../../UserServices';
  
 function CameraComp (props) {
   /*function getBase64Image(imgElem) {
@@ -27,10 +28,21 @@ function CameraComp (props) {
     console.log('takePhoto');
     console.log(dataUri)
   }
+
+  function sendImage(img) {
+    console.log(img);
+    DataService.getLabels(/*getBase64Image('../../../public/cat.jpeg')*/img)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(e => {
+            console.log(e);
+        })
+  }
  
   return (
     <Camera
-      onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+      onTakePhoto = { (dataUri) => { sendImage(dataUri); } }
     />
   );
 }

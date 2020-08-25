@@ -1,9 +1,12 @@
 package com.LJ.RecyclingTrackerAPI.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.vision.CloudVisionTemplate;
 import org.springframework.core.io.Resource;
@@ -64,8 +67,10 @@ public class ServicesController {
 	
 	@RequestMapping("/getLabelDetection")
 	public String getLabelDetection(String img) {
-		System.out.println(img);
-		Resource imageResource = this.resourceLoader.getResource("file:src/main/resources/static/cat.jpeg");
+		String imageDataBytes = img.substring(img.indexOf(",")+1);
+//		InputStream stream = new ByteArrayInputStream(Base64.decode(imageDataBytes.getBytes(), Base64.DEFAULT));
+		InputStream stream = new ByteArrayInputStream(Base64.decodeBase64(imageDataBytes));
+		Resource imageResource = this.resourceLoader.getResource("file:stream");
 		AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
 		                                    imageResource, Feature.Type.LABEL_DETECTION);
 		return response.getLabelAnnotationsList().toString();
