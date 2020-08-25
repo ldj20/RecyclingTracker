@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DataService from '../../UserServices';
-import Camera from '../camera/Camera';
+import CameraComp from '../camera/CameraComp';
 
 function AccountHome() {
     
@@ -29,7 +29,7 @@ function AccountHome() {
     return (
         <div>
             <h2>Welcome!</h2>
-            <Camera />
+            <CameraComp />
             <button onClick={sendImage}/>
             <p>{exLabel}</p>
         </div>
