@@ -30,8 +30,6 @@ function CameraComp (props) {
   }
 
   function sendImage(img) {
-    console.log(img);
-    console.log(typeof(img));
     DataService.getLabels(img)
         .then(response => {
             console.log(response);
