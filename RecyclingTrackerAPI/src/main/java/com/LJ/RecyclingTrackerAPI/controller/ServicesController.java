@@ -68,15 +68,26 @@ public class ServicesController {
 	}
 	
 	@RequestMapping("/getLabelDetection")
-	public String getLabelDetection(@RequestBody String img) {
+	public Map<String, Float> getLabelDetection(@RequestBody String img) {
 		
 		String imageDataBytes = img.substring(img.indexOf(",")+1);
 		byte[] byteArray = Base64.getDecoder().decode(imageDataBytes);
 		Resource imageResource = new ByteArrayResource(byteArray);
-		AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
+		AnnotateImageResponse results = this.cloudVisionTemplate.analyzeImage(
 		                                    imageResource, Feature.Type.LABEL_DETECTION);
-		System.out.println(response);
-		return response.getLabelAnnotationsList().toString();
+		Map<String, Float> imageLabels =
+			    results
+			        .getLabelAnnotationsList()
+			        .stream()
+			        .collect(
+			            Collectors.toMap(
+			                EntityAnnotation::getDescription,
+			                EntityAnnotation::getScore,
+			                (u, v) -> {
+			                  throw new IllegalStateException(String.format("Duplicate key %s", u));
+			                },
+			                LinkedHashMap::new));
+		return imageLabels;
 	}
 	
 	//sends an object with only the necessary components for a dashboard
