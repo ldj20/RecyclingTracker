@@ -38,35 +38,7 @@ public class ServicesController {
 	private TrackerService trackerService;
 	@Autowired 
 	private CloudVisionTemplate cloudVisionTemplate;
-	@Autowired private 
-	ResourceLoader resourceLoader;
 
-	@GetMapping("/extractLabels")
-	public ModelAndView extractLabels(String imageUrl, ModelMap map) {
-		AnnotateImageResponse response =
-		        this.cloudVisionTemplate.analyzeImage(
-		            this.resourceLoader.getResource(imageUrl), Type.LABEL_DETECTION);
-
-		    Map<String, Float> imageLabels =
-		        response
-		            .getLabelAnnotationsList()
-		            .stream()
-		            .collect(
-		                Collectors.toMap(
-		                    EntityAnnotation::getDescription,
-		                    EntityAnnotation::getScore,
-		                    (u, v) -> {
-		                      throw new IllegalStateException(String.format("Duplicate key %s", u));
-		                    },
-		                    LinkedHashMap::new));
-		    // [END spring_vision_image_labelling]
-
-		    map.addAttribute("annotations", imageLabels);
-		    map.addAttribute("imageUrl", imageUrl);
-
-		    return new ModelAndView("result", map);
-	}
-	
 	@RequestMapping("/getLabelDetection")
 	public Map<String, Float> getLabelDetection(@RequestBody String img) {
 		
