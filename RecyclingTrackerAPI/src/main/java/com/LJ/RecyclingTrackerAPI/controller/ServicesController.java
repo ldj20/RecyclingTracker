@@ -2,13 +2,14 @@ package com.LJ.RecyclingTrackerAPI.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.vision.CloudVisionTemplate;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,13 +68,14 @@ public class ServicesController {
 	}
 	
 	@RequestMapping("/getLabelDetection")
-	public String getLabelDetection(String img) {
+	public String getLabelDetection(@RequestBody String img) {
+		
 		String imageDataBytes = img.substring(img.indexOf(",")+1);
-//		InputStream stream = new ByteArrayInputStream(Base64.decode(imageDataBytes.getBytes(), Base64.DEFAULT));
-		InputStream stream = new ByteArrayInputStream(Base64.decodeBase64(imageDataBytes));
-		Resource imageResource = this.resourceLoader.getResource("file:stream");
+		byte[] byteArray = Base64.getDecoder().decode(imageDataBytes);
+		Resource imageResource = new ByteArrayResource(byteArray);
 		AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
 		                                    imageResource, Feature.Type.LABEL_DETECTION);
+		System.out.println(response);
 		return response.getLabelAnnotationsList().toString();
 	}
 	
