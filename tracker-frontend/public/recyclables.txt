@@ -1,0 +1,7 @@
+paper
+cardboard
+plastic
+metal
+can
+tin
+aluminum

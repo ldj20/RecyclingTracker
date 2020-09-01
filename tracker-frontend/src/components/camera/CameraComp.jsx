@@ -2,38 +2,23 @@ import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import DataService from '../../UserServices';
+const fs = require('fs');
  
 function CameraComp (props) {
-  /*function getBase64Image(imgElem) {
-      var canvas = document.createElement("canvas");
-      canvas.width = imgElem.clientWidth;
-      canvas.height = imgElem.clientHeight;
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(imgElem, 0, 0);
-      var dataURL = canvas.toDataURL("image/png");
-      return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-    }
 
-    function sendImage(img) {
-      DataService.getLabels(getBase64Image('../../../public/cat.jpeg'))
-          .then(response => {
-              console.log(response);
-          })
-          .catch(e => {
-              console.log(e);
-          })
-    }*/
-  
-  function handleTakePhoto (dataUri) {
-    console.log('takePhoto');
-    console.log(dataUri)
-  }
+  const text = fs.readFileSync("../../../public/recyclables.txt", "utf-8");
+  var textByLine = text.split("\n")
 
   function sendImage(img) {
     DataService.getLabels(img)
         .then(response => {
-            console.log(response);
-        })
+            /*labels = response.data;
+            textByLine.forEach(item => {
+              if (item in labels && labels[`${item}`] > 0.65) {
+                //update board and return success screen
+              }
+            })
+        */})
         .catch(e => {
             console.log(e);
         })

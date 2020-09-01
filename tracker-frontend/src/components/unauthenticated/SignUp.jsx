@@ -50,76 +50,76 @@ function SignUp(props) {
                 <header>
                     <h2>Sign Up</h2>
                 </header>
+                <form onSubmit={saveData}>
+                    <div className="form-group preauth-select-style">
+                        <label htmlFor="fName">First Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="fName"
+                            required
+                            value={form.fName}
+                            onChange={handleChange}
+                            name="fName"
+                        />
+                    </div>
+            
+                    <div className="form-group preauth-select-style">
+                        <label htmlFor="lName">Last Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="lName"
+                            required
+                            value={form.lName}
+                            onChange={handleChange}
+                            name="lName"
+                        />
+                    </div>
 
-                <div className="form-group preauth-select-style">
-                    <label htmlFor="fName">First Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="fName"
-                        required
-                        value={form.fName}
-                        onChange={handleChange}
-                        name="fName"
-                    />
-                </div>
-        
-                <div className="form-group preauth-select-style">
-                    <label htmlFor="lName">Last Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="lName"
-                        required
-                        value={form.lName}
-                        onChange={handleChange}
-                        name="lName"
-                    />
-                </div>
+                    <div className="form-group preauth-select-style">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="email"
+                            required
+                            value={form.email}
+                            onChange={handleChange}
+                            name="email"
+                        />
+                    </div>
 
-                <div className="form-group preauth-select-style">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        name="email"
-                    />
-                </div>
+                    <div className="form-group preauth-select-style">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            required
+                            value={form.password}
+                            onChange={handleChange}
+                            name="password"
+                        />
+                    </div>
 
-                <div className="form-group preauth-select-style">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        required
-                        value={form.password}
-                        onChange={handleChange}
-                        name="password"
-                    />
-                </div>
-
-                <div className="form-group preauth-select-style">
-                    <label htmlFor="goal">Daily Recycling Goal</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="state"
-                        required
-                        value={form.goal}
-                        onChange={handleChange}
-                        name="goal"
-                    />
-                </div>
-        
-                <button type="submit" className="btn btn-info form-control preauth-button-style" onClick={saveData}>
-                    Submit
-                </button>
-                    
+                    <div className="form-group preauth-select-style">
+                        <label htmlFor="goal">Daily Recycling Goal</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="state"
+                            required
+                            value={form.goal}
+                            onChange={handleChange}
+                            name="goal"
+                        />
+                    </div>
+            
+                    <button type="submit" className="btn btn-info form-control preauth-button-style">
+                        Submit
+                    </button>
+                </form>
             </div>
             )}
         </div>
