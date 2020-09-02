@@ -5,17 +5,15 @@ import { Link } from 'react-router-dom';
 //todo: figure out why validations aren't working, make recycling goal limited to numbers
 
 function SignUp(props) {
-
-    const initialFormState= {
+    
+    const [form, setForm] = useState({
         fName: "",
         lName: "",
         email: "",
         password: "",
         goal: ""
-    };
-    
-    const [form, setForm] = useState({initialFormState});
-    
+    });
+
     const [submitted, setSubmitted] = useState(false);
 
     const handleChange = event => {
