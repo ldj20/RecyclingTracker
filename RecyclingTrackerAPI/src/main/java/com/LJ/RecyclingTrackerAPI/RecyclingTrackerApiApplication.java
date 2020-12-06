@@ -18,7 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 import com.LJ.RecyclingTrackerAPI.repositories.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

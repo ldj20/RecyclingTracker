@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.LJ.RecyclingTrackerAPI.domain.DisplayData;
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 import com.LJ.RecyclingTrackerAPI.request.model.OverallUpdateModel;
 import com.LJ.RecyclingTrackerAPI.request.model.UpdateUserModel;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
@@ -38,23 +38,23 @@ public class TrackerController {
 	@Autowired
 	private TrackerService trackerService;
 	@Autowired
-	private UserAccount testUser;
+	private User testUser;
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@GetMapping
 	public ResponseEntity<?> getAll() {
-		List<UserAccount> result = trackerService.findAll();
+		List<User> result = trackerService.findAll();
 		return new ResponseEntity(result, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getById(@PathVariable("id") String id) {
-		UserAccount result = trackerService.findById(id);
+		User result = trackerService.findById(id);
 		return new ResponseEntity(result, HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> createUser(@RequestBody UserAccount user) {
+	public ResponseEntity<?> createUser(@RequestBody User user) {
 		String pw_hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(pw_hash);
 		user.setPoints(0);
@@ -66,7 +66,7 @@ public class TrackerController {
 	
 	@PutMapping(path="/{id}")
 	public ResponseEntity<?> updateUser(@PathVariable String id, @Valid @RequestBody OverallUpdateModel update) {
-		UserAccount user = trackerService.findById(id);
+		User user = trackerService.findById(id);
 		if (update.getUpdatedDetails() != null) {
 			user = updateUserDetails(user, update.getUpdatedDetails());
 		} else if (update.getUpdatedPassword() != null) {
@@ -78,7 +78,7 @@ public class TrackerController {
 		return new ResponseEntity(user, HttpStatus.OK);
 	}
 	
-	public UserAccount updateUserDetails(UserAccount user, UpdateUserModel updatedDetails) {
+	public User updateUserDetails(User user, UpdateUserModel updatedDetails) {
 		user.setfName(updatedDetails.getfName());
 		user.setlName(updatedDetails.getlName());
 		user.setGoal(updatedDetails.getGoal());
@@ -87,14 +87,14 @@ public class TrackerController {
 		return user;
 	}
 	
-	public UserAccount updateUserPassword(UserAccount user, String updatedPassword) {
+	public User updateUserPassword(User user, String updatedPassword) {
 		user.setPassword(updatedPassword);
 		
 		trackerService.createOrUpdateUser(user);
 		return user;
 	}
 	
-	public UserAccount updateUserFrequency(UserAccount user, Map<Date, Integer> updatedFrequency) {
+	public User updateUserFrequency(User user, Map<Date, Integer> updatedFrequency) {
 		user.setFrequency(updatedFrequency);
 		
 		trackerService.createOrUpdateUser(user);

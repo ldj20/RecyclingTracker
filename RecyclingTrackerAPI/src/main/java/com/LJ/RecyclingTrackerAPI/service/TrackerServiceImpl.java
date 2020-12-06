@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.LJ.RecyclingTrackerAPI.domain.DisplayData;
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 import com.LJ.RecyclingTrackerAPI.repositories.AccountRepository;
 
 @Service
@@ -21,20 +21,20 @@ public class TrackerServiceImpl implements TrackerService {
 	
 	@Override
 	public
-	List<UserAccount> findAll() {
+	List<User> findAll() {
 		return accountRepository.findAll();
 	}
 	
 	@Override
 	public
-	UserAccount findByEmail(String email) {
+	User findByEmail(String email) {
 		return accountRepository.findByEmail(email);
 	}
 	
 	@Override
 	public
-	UserAccount findById(String id) {
-		Optional<UserAccount> returnContent = accountRepository.findById(id);
+	User findById(String id) {
+		Optional<User> returnContent = accountRepository.findById(id);
 		if (returnContent.isPresent()) {
 			return returnContent.get();
 		} 
@@ -49,7 +49,7 @@ public class TrackerServiceImpl implements TrackerService {
 	
 	@Override
 	public
-	void createOrUpdateUser(UserAccount user) {
+	void createOrUpdateUser(User user) {
 		accountRepository.save(user);
 	}
 	

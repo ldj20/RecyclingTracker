@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 import com.LJ.RecyclingTrackerAPI.domain.DisplayData;
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 
 public interface TrackerService {
 
-	List<UserAccount> findAll();
+	List<User> findAll();
 	
-	UserAccount findByEmail(String email);
+	User findByEmail(String email);
 	
-	UserAccount findById(String id);
+	User findById(String id);
 	
 	DisplayData getDisplayData(String id);
 	
-	void createOrUpdateUser(UserAccount user);
+	void createOrUpdateUser(User user);
 		
 	void deleteUser(String id);
 }

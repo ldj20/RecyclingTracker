@@ -4,9 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 
-public interface AccountRepository extends MongoRepository<UserAccount, String> {
-	public UserAccount findByEmail(String email);
-	public Optional<UserAccount> findById(String id);
+public interface AccountRepository extends MongoRepository<User, String> {
+	public User findByEmail(String email);
+	public Optional<User> findById(String id);
 }

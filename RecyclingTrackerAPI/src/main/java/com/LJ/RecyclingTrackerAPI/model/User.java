@@ -1,4 +1,4 @@
-package com.LJ.RecyclingTrackerAPI.domain;
+package com.LJ.RecyclingTrackerAPI.model;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Document
 @Component
-public class UserAccount {
+public class User {
 	
 	@Id
 	private String id;
@@ -28,7 +28,7 @@ public class UserAccount {
 	
 	//autowired constructor for testing
 	@Autowired
-	public UserAccount() {
+	public User() {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 		Date currDate = new Date();

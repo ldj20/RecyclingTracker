@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.LJ.RecyclingTrackerAPI.domain.DisplayData;
-import com.LJ.RecyclingTrackerAPI.domain.UserAccount;
+import com.LJ.RecyclingTrackerAPI.model.User;
 import com.LJ.RecyclingTrackerAPI.service.TrackerService;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
@@ -65,12 +65,12 @@ public class ServicesController {
 	//sends an object with only the necessary components for a dashboard
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDisplayData(@PathVariable("id") String id) {
-		UserAccount result = trackerService.findById(id);
+		User result = trackerService.findById(id);
 		
 		//uncomment below line and comment above line to test various different values for UserAccount
 		//UserAccount result = testUser;
 		
-		String message = "You still have some habits to build up, but you'll get there eventually!";
+		String message = "You still have some habits to build up. Keep at it!";
 		Boolean background = false;
 		if (result.getPoints() > 0) {
 			message = "You've been recycling well and reaching your goal! Keep it up!";
