@@ -66,7 +66,6 @@ public class ServicesController {
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDisplayData(@PathVariable("id") String id) {
 		User result = trackerService.findById(id);
-		
 		//uncomment below line and comment above line to test various different values for UserAccount
 		//UserAccount result = testUser;
 		
